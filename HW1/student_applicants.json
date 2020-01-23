@@ -1,0 +1,26 @@
+[
+    {
+        "id": "585c3dcc-3e03-11ea-adcd-11e875bc96fc",
+        "first_name": "Tom",
+        "last_name": "Smith",
+        "email": "tom.s@drexel.edu",
+        "address": "philly",
+        "applied_scholarships": "41d3db8a-3e00-11ea-99d2-e9cbc51cfe49"
+    },
+    {
+        "id": "4deb3e7e-3e08-11ea-b657-c14511b44ebc",
+        "first_name": "Carl",
+        "last_name": "Wilson",
+        "email": "c.w@drexel.edu",
+        "address": "2003 Test St, Philly, PA",
+        "applied_scholarships": "4203183c-3e00-11ea-99d2-e9cbc51cfe49"
+    },
+    {
+        "id": "cddd4924-3e08-11ea-b657-c14511b44ebc",
+        "first_name": "Nik",
+        "last_name": "House",
+        "email": "n.k@drexel.edu",
+        "address": "Dev St, CV",
+        "applied_scholarships": "4203183c-3e00-11ea-99d2-e9cbc51cfe49"
+    }
+]
