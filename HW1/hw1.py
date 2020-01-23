@@ -129,53 +129,57 @@ while True:
     print("9 - Delete a student applicant")
     print("q - quit")
     num = input("press number 1-7 to proceed, or letter `q` to quit\n")
-    if num.strip() == "q":
-        break
-    elif num.strip() == "1":
-        print(json.dumps(scholarships, indent=2))
-    elif num.strip() == "2":
-        s_id = input("please enter scholarship id e.g. `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
-        s = Scholarship.get_from(scholarships, s_id)
-        print(json.dumps(s.__dict__, indent=2))
-    elif num.strip() == "3":
-        description = input("please enter description\n")
-        availability = input("please enter availability e.g. `undergraduate,graduate` or `graduate`\n")
-        availability = availability.split(',')
-        amount = input("please enter amount\n")
-        aid_type = input("please enter aid_type e.g. `merit_based` or `financial_aid`\n")
-        citizenship_requirements = bool(input("please enter citizenship_requirements e.g. `0` for False or `1` for True\n"))
-        s = Scholarship(description, availability, amount, aid_type, citizenship_requirements)
-        s.add_to(scholarships)
-        print("added successfully")
-    elif num.strip() == "4":
-        s_id = input("please enter scholarship id e.g. `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
-        s = Scholarship.get_from(scholarships, s_id)
-        s.delete_from(scholarships, student_applicants)
-        print("deleted successfully")
-    elif num.strip() == "5":
-        s_id = input("please enter scholarship id e.g. `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
-        s = Scholarship.get_from(scholarships, s_id)
-        print(json.dumps(s.view_all_applicants(student_applicants), indent=2))
-    elif num.strip() == "6":
-        print(json.dumps(student_applicants, indent=2))
-    elif num.strip() == "7":
-        sa_id = input("please enter student applicant id e.g. `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
-        sa = StudentApplicant.get_from(student_applicants, sa_id)
-        s = Scholarship.get_from(scholarships, sa.applied_scholarships)
-        print("scholarship applied:\n", json.dumps(s.__dict__, indent=2))
-        print(json.dumps(sa.__dict__, indent=2))
-    elif num.strip() == "8":
-        print(scholarships)
-        first_name = input("please enter first_name\n")
-        last_name = input("please enter last_name\n")
-        email = input("please enter email\n")
-        address = input("please enter address\n")
-        applied_scholarships = input("please enter applied_scholarships by using the *id* of available scholarship. Example: `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
-        sa = StudentApplicant(first_name, last_name, email, address, applied_scholarships)
-        sa.add_to(student_applicants)
-        print("added successfully")
-    elif num.strip() == "9":
-        sa_id = input("please enter student applicant id e.g. `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
-        sa = StudentApplicant.get_from(student_applicants, sa_id)
-        sa.delete_from(student_applicants)
-        print("deleted successfully")
+    try:
+        if num.strip() == "q":
+            break
+        elif num.strip() == "1":
+            print(json.dumps(scholarships, indent=2))
+        elif num.strip() == "2":
+            s_id = input("please enter scholarship id e.g. `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
+            s = Scholarship.get_from(scholarships, s_id)
+            print(json.dumps(s.__dict__, indent=2))
+        elif num.strip() == "3":
+            description = input("please enter description\n")
+            availability = input("please enter availability e.g. `undergraduate,graduate` or `graduate`\n")
+            availability = availability.split(',')
+            amount = input("please enter amount\n")
+            aid_type = input("please enter aid_type e.g. `merit_based` or `financial_aid`\n")
+            citizenship_requirements = bool(input("please enter citizenship_requirements e.g. `0` for False or `1` for True\n"))
+            s = Scholarship(description, availability, amount, aid_type, citizenship_requirements)
+            s.add_to(scholarships)
+            print("added successfully")
+        elif num.strip() == "4":
+            s_id = input("please enter scholarship id e.g. `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
+            s = Scholarship.get_from(scholarships, s_id)
+            s.delete_from(scholarships, student_applicants)
+            print("deleted successfully")
+        elif num.strip() == "5":
+            s_id = input("please enter scholarship id e.g. `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
+            s = Scholarship.get_from(scholarships, s_id)
+            print(json.dumps(s.view_all_applicants(student_applicants), indent=2))
+        elif num.strip() == "6":
+            print(json.dumps(student_applicants, indent=2))
+        elif num.strip() == "7":
+            sa_id = input("please enter student applicant id e.g. `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
+            sa = StudentApplicant.get_from(student_applicants, sa_id)
+            s = Scholarship.get_from(scholarships, sa.applied_scholarships)
+            print("scholarship applied:\n", json.dumps(s.__dict__, indent=2))
+            print(json.dumps(sa.__dict__, indent=2))
+        elif num.strip() == "8":
+            print(scholarships)
+            first_name = input("please enter first_name\n")
+            last_name = input("please enter last_name\n")
+            email = input("please enter email\n")
+            address = input("please enter address\n")
+            applied_scholarships = input("please enter applied_scholarships by using the *id* of available scholarship. Example: `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
+            sa = StudentApplicant(first_name, last_name, email, address, applied_scholarships)
+            sa.add_to(student_applicants)
+            print("added successfully")
+        elif num.strip() == "9":
+            sa_id = input("please enter student applicant id e.g. `41d3db8a-3e00-11ea-99d2-e9cbc51cfe49`\n")
+            sa = StudentApplicant.get_from(student_applicants, sa_id)
+            sa.delete_from(student_applicants)
+            print("deleted successfully")
+    except Exception as e:
+        print("some errors occured, possibly incorrect input, try again.")
+        print("the error is", e)
